@@ -1,0 +1,13 @@
+.form-container-style {
+  padding-left: 35%;
+  padding-right: 35%;
+  padding-top: 5%;
+}
+.error-container {
+  background-color: red;
+  background-size: 600px;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

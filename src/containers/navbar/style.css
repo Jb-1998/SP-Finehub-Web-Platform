@@ -1,0 +1,25 @@
+.nav-style {
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  padding-right: 22%;
+  padding-left: 22%;
+  background-color: white;
+}
+.logo-style {
+  width: 70px;
+  height: 70px;
+}
+
+.title-style {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.icon-style {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-style-categories {
+  width: 25px;
+  height: 25px;
+}

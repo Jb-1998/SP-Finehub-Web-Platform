@@ -1,0 +1,77 @@
+.row-style {
+}
+.feed-style {
+  grid-area: feed;
+}
+.settings-style {
+  grid-area: settings;
+  margin-left: 25px;
+  position: fixed;
+  height: 100vh;
+  position: sticky;
+  top: 80px;
+}
+.container-style {
+  display: grid;
+  grid-template-areas: "feed settings";
+  margin-top: 25px;
+}
+
+.card-style {
+  width: 530px;
+}
+
+.profile-style {
+  display: grid;
+  grid-template-areas: "imageProfile nameSection";
+  align-items: center;
+}
+
+.image-profile-style {
+  grid-area: imageProfile;
+}
+
+.name-section-style {
+  grid-area: nameSection;
+  margin-left: -9rem;
+}
+
+.name-section-style-second {
+  grid-area: nameSection;
+  margin-left: -13rem;
+}
+.textarea-style:focus {
+  border: 0px solid transparent;
+}
+
+.image-profile-style-second {
+  grid-area: imageProfile;
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.modal-width {
+  width: 25%;
+}
+
+.modal-body-style {
+  height: 200px;
+}
+
+.text-area-style {
+  border: 0;
+  padding: 0;
+  margin-top: 5;
+  font-size: 20px;
+  width: 100%;
+}
+
+.text-area-style:focus {
+  border: 0;
+  padding: 0;
+  outline: none;
+}

@@ -26,6 +26,13 @@ import { FiImage } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextareaAutosize from "react-autosize-textarea"
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect} from "react-router-dom";
 
 const Emoji = props => (
     <span
@@ -53,13 +60,13 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <span style={{backgroundColor: '#E8E8E8', width: 10, height: 10}}>&#x25BE;</span>
     </a>
   ));
-  
+
   // forwardRef again here!
   // Dropdown needs access to the DOM of the Menu to measure it
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
       const [value, setValue] = useState('');
-  
+
       return (
         <div
           ref={ref}
@@ -77,9 +84,6 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       );
     },
   );
-
-
- 
 
 const Home = () => {
 
@@ -117,15 +121,15 @@ const Home = () => {
     ]
 
     useEffect(() => {
-        setCurrentDay(moment().format("YYYY-M-D HH:mm:ss")) 
+        setCurrentDay(moment().format("YYYY-M-D HH:mm:ss"))
     }, [currentDay]);
 
-    
+
 
     const getFeedData = () => {
         try{
             axios.get('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/',
-            {   
+            {
                 headers: {
                     'Accept': 'application/json',
                     "Content-Type": 'application/json',
@@ -154,7 +158,7 @@ const Home = () => {
         if(imageAsFile === null) {
             console.log("do not execute upload")
             try {
-                axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store', 
+                axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store',
                 {
                     "uid": uid,
                     "displayName": displayName,
@@ -186,7 +190,7 @@ const Home = () => {
             console.log("execute upload")
             const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
             let timeData = moment().format("YYYY-MM-DD HH:mm:ss")
-            uploadTask.on('state_changed', 
+            uploadTask.on('state_changed',
             (snapShot) => {
                 //takes a snap shot of the process as it is happening
                 console.log(snapShot)
@@ -200,7 +204,7 @@ const Home = () => {
                 .then(url => {
                     setImageAsUrl(url)
                     try {
-                        axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store', 
+                        axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store',
                         {
                             "uid": uid,
                             "displayName": displayName,
@@ -261,9 +265,8 @@ const Home = () => {
         setEmotions("")
     }
 
-
-
     return (
+
         <div>
             <Navbar />
             <Modal
@@ -301,7 +304,7 @@ const Home = () => {
                                         <Dropdown.Item eventKey="😰Fearful" onSelect={(eventKey, event) => setEmotions(eventKey)} style={{fontSize: 12}}><Emoji symbol="😨" label="sheep"/> Fearful</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </div> 
+                            </div>
                         </div>
                     </Modal.Title>
                     <Scrollbars style={{height: imageAsFile ? 300 : 120}} autoHide={imageAsFile ? false : true}>
@@ -309,7 +312,7 @@ const Home = () => {
                             <TextareaAutosize  className="text-area-style" placeholder="What would you like to share?"  value={content} onChange={(e) => {
                                 setContent(e.target.value)
                                 closeMenu()
-                                }   
+                                }
                             }/>
                         </Form.Group>
                         <div>
@@ -324,7 +327,7 @@ const Home = () => {
                         </div>
                     </Scrollbars>
                     <label for="upload-photo" style={{cursor: 'pointer'}}><FiImage/></label>
-                            <input 
+                            <input
                             type="file"
                             name="photo"
                             id="upload-photo"
@@ -333,7 +336,7 @@ const Home = () => {
 
                         {
                             showEmojis ?
-                            <span style={styles.emojiPicker} ref={inputEl}> 
+                            <span style={styles.emojiPicker} ref={inputEl}>
                                 <NimblePicker sheetSize={64} set="twitter" data={data} onSelect={addEmoji} title="" emoji='none' style={{ position: 'absolute', bottom: '20px', right: '20px' }} />
                             </span>
                             :
@@ -369,7 +372,7 @@ const Home = () => {
                             list={feedData}
                             sortDescending={false}
                             renderItem={(user, index) => {
-                                
+
                                 const publishedDate = user.createdAt;
                                 const dateTime = moment(publishedDate, "YYYY-MM-DD hh:mm:ss").format("MMMM DD, YYYY HH:mm:ss")
                                 const newDateTime = moment(dateTime).fromNow()
@@ -385,7 +388,7 @@ const Home = () => {
                                                     <Dropdown style={{marginTop: -5}}>
                                                     <div>
                                                         <IconContext.Provider value={{ size: "0.7em"}}><ImClock/>  </IconContext.Provider><span style={{fontSize: 12}}>{newDateTime} - {user.emotions}</span>
-                                                    </div>    
+                                                    </div>
                                                     </Dropdown>
                                                 </div>
                                             </div>
@@ -404,11 +407,11 @@ const Home = () => {
                                             <Card.Footer style={{backgroundColor: '#fff'}}>
                                                 <div className="profile-style">
                                                     <Image src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 20, width: 20, backgroundSize: 'cover'}} className="image-profile-style" fluid/>
-                                                    <div className="name-section-style-second">
+                                                    <div className="name-section-style-second" >
                                                         <TextareaAutosize  className="text-area-style" placeholder="comment section here.."  value={content} onChange={(e) => {
                                                             setContent(e.target.value)
                                                             closeMenu()
-                                                            }   
+                                                            }
                                                         }/>
                                                     </div>
                                                 </div>
@@ -425,14 +428,10 @@ const Home = () => {
                 </div>
                 <div className="settings-style">
                     <Button variant="primary" onClick={() => setModalShow(true)} style={{width: '100%', marginBottom: 20}}>Create a post</Button>
-                    <Card style={{ width: '18rem' }}>
-                    <Card.Header>Featured</Card.Header>
-                    <ListGroup variant="flush">
-                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                    </ListGroup>
-                    </Card>
+                    <Link to="/./NewPage/index">
+                    <Button variant="primary" style={{width: '100%', marginBottom: 20}}>Profile</Button>
+                    </Link>
+                    
                 </div>
             </div>
 

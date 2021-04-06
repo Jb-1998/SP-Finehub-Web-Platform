@@ -28,8 +28,6 @@ const LoginForm = () => {
         });
     }
 
-
-
     return (
         <div className="form-container-style">
             <h4 style={{paddingBottom: 30, textAlign: 'center'}}>Sign In to finehub</h4>
@@ -80,6 +78,5 @@ const LoginForm = () => {
         </div>
     )
 }
-
 
 export default LoginForm;

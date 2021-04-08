@@ -428,10 +428,9 @@ const Home = () => {
                 </div>
                 <div className="settings-style">
                     <Button variant="primary" onClick={() => setModalShow(true)} style={{width: '100%', marginBottom: 20}}>Create a post</Button>
-                    <Link to="/./NewPage/index">
                     <Button variant="primary" style={{width: '100%', marginBottom: 20}}>Profile</Button>
-                    </Link>
                     
+
                 </div>
             </div>
 

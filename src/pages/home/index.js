@@ -273,7 +273,7 @@ const Home = () => {
                 show={modalShow}
                 onHide={closeCreatePost}
                 aria-labelledby="contained-modal-title-vcenter"
-                dialogClassName="modal-width"
+                dialog ClassName="modal-width"
                 centered
                 >
                 <Modal.Header closeButton style={{borderWidth: 0.1}} className="justify-content-center">
@@ -427,9 +427,9 @@ const Home = () => {
                     </Row>
                 </div>
                 <div className="settings-style">
-                    <Button variant="primary" onClick={() => setModalShow(true)} style={{width: '100%', marginBottom: 20}}>Create a post</Button>
-                    <Button variant="primary" style={{width: '100%', marginBottom: 20}}>Profile</Button>
-                    
+                    <Button className = "button" variant="primary" onClick={() => setModalShow(true)} style={{width: '100%', marginBottom: 20}}>Create a post</Button>
+                    <Button className = "button" variant="primary" style={{width: '100%', marginBottom: 20}}>Profile</Button>
+
 
                 </div>
             </div>
@@ -439,6 +439,8 @@ const Home = () => {
 }
 
 export default Home;
+
+
 
 const styles = {
     emojiPicker: {

@@ -2,7 +2,6 @@
 }
 .feed-style {
   grid-area: feed;
-
 }
 .settings-style {
   grid-area: settings;
@@ -77,7 +76,26 @@
   outline: none;
 }
 
-@media all and (max-width: 500px;) {
-  .button {background-color: red;}
+@media only screen and (max-width: 480px)  {
+  .card {zoom: 0.5;
+    -moz-transform: scale(0.5);}
+
+  .button {
+    position: fixed;
+    max-width: 55px;
+    height: 55px;
+    text-indent: -9000px; text-transform: capitalize;
+    background-image: url(sample.png); /* 16px x 16px */
+    background-size: cover;
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;
+  }
+  .settings-style {
+    position: absolute;
+    right: 75px;
+  }
+
 
 }

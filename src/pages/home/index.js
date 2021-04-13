@@ -34,6 +34,7 @@ import {
   Link,
   Redirect} from "react-router-dom";
 
+
 const Emoji = props => (
     <span
         className="emoji"
@@ -377,9 +378,9 @@ const Home = () => {
                                 const dateTime = moment(publishedDate, "YYYY-MM-DD hh:mm:ss").format("MMMM DD, YYYY HH:mm:ss")
                                 const newDateTime = moment(dateTime).fromNow()
                                 return (
-                                    <div>
+                                    <div className ="feed">
                                         <li key={index}>
-                                        <Card style={{marginBottom: 5}} className="card-style">
+                                        <Card className="card" style={{marginBottom: 5}} className="card-style">
                                             <Card.Header style={{backgroundColor: '#fff', border:0}}>
                                             <div className="profile-style">
                                                 <Image src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 35, width: 35, backgroundSize: 'cover'}} className="image-profile-style" fluid/>
@@ -428,8 +429,6 @@ const Home = () => {
                 </div>
                 <div className="settings-style">
                     <Button className = "button" variant="primary" onClick={() => setModalShow(true)} style={{width: '100%', marginBottom: 20}}>Create a post</Button>
-                    <Button className = "button" variant="primary" style={{width: '100%', marginBottom: 20}}>Profile</Button>
-
 
                 </div>
             </div>
@@ -457,4 +456,4 @@ const styles = {
         margin: 0,
         cursor: "pointer"
     },
-}
+};

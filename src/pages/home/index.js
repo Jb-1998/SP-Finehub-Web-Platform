@@ -269,7 +269,12 @@ const Home = () => {
     return (
 
         <div>
-            <Navbar />
+            <div>
+              <Navbar />
+            </div>
+
+
+            
             <Modal
                 show={modalShow}
                 onHide={closeCreatePost}

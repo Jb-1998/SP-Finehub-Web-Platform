@@ -15,6 +15,25 @@ const NavigationBar = () => {
       <Navbar className="nav-style" sticky="top">
         <Navbar.Collapse className="justify-content-start">
           <Navbar.Brand href="#home" className="title-style">finehub</Navbar.Brand>
+          <ul className="nav-menu">
+                <li className="nav-item">
+                    <a href="#" className="nav-link">Home</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link">Profile</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link">Settings & Privacy</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link">Help & Support</a>
+                </li>
+            </ul>
+            <div className="hamburger">
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+            </div>
         </Navbar.Collapse>
         {/* <Navbar.Collapse className="justify-content-center">
           <Nav>
@@ -42,3 +61,13 @@ const NavigationBar = () => {
  }
 
  export default NavigationBar;
+
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  hamburger.addEventListener("click", mobileMenu);
+
+  function mobileMenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+  }

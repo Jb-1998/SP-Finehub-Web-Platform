@@ -274,7 +274,7 @@ const Home = () => {
             </div>
 
 
-            
+
             <Modal
                 show={modalShow}
                 onHide={closeCreatePost}
@@ -388,7 +388,7 @@ const Home = () => {
                                         <Card className="card" style={{marginBottom: 5}} className="card-style">
                                             <Card.Header style={{backgroundColor: '#fff', border:0}}>
                                             <div className="profile-style">
-                                                <Image src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 35, width: 35, backgroundSize: 'cover'}} className="image-profile-style" fluid/>
+                                                <Image className="pfp" src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 35, width: 35, backgroundSize: 'cover'}} className="image-profile-style" fluid/>
                                                 <div className="name-section-style-second">
                                                     <span>{user.displayName}</span>
                                                     <Dropdown style={{marginTop: -5}}>

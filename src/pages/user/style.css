@@ -11,8 +11,9 @@
 .page-header-container {
   display: grid;
   grid-template-areas:
-    "picture info"
-    "tabs tabs";
+    "picture"
+    "info"
+    "tabs";
 }
 .picture-style {
   grid-area: picture;
@@ -40,3 +41,49 @@
 .activity-feed {
   grid-area: activity-feed;
 }
+
+@media only screen and (max-width: 480px)  {
+  .page-header-container {
+    display: grid;
+    grid-template-areas:
+      "picture"
+      "info"
+      "tabs"
+      "tabs";
+  }
+  .picture-style{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  .info-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  text-align: center;
+  }
+
+  .edit {
+    margin-bottom: 50px;
+  }
+
+    .setting-feed {
+      display: none;
+      zoom: 0.7;
+      -moz-transform: scale(0.7);
+    }
+
+    .activities-container {
+      zoom: 0.80;
+      -moz-transform: scale(0.80);
+      position: absolute;
+    }
+
+  .name-section-style-second {
+    border-left: solid transparent 2em;
+  }
+
+
+  }

@@ -27,7 +27,7 @@ import TextareaAutosize from "react-autosize-textarea"
 import CommentInput from '../../components/comment-input/index'
 import { Menu, Avatar, PageHeader,  Tag, Tabs,  Skeleton, Timeline, Popconfirm, Drawer, Form, Col, Input, Select, DatePicker, Divider } from 'antd';
 import {Button as ButtonAntDesign} from 'antd';
-import { Card as CardAntDesign} from 'antd';    
+import { Card as CardAntDesign} from 'antd';
 import {Row as RowAntDesign} from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingFilled, HomeFilled,  MessageFilled, EllipsisOutlined, SmileFilled, PlusOutlined } from '@ant-design/icons';
 
@@ -52,7 +52,7 @@ const User = () => {
 
     const { TabPane } = Tabs;
 
-    
+
     function callback(key) {
         console.log(key);
     }
@@ -67,7 +67,7 @@ const User = () => {
 
         try{
             axios.get('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/',
-            {   
+            {
                 headers: {
                     'Accept': 'application/json',
                     "Content-Type": 'application/json',
@@ -79,23 +79,23 @@ const User = () => {
                 console.log(result)
                 setFeedData(result)
             })
-        } catch(err){            
+        } catch(err){
         }
     }
     useEffect(() => {
         // Update the document title using the browser API
         getFeedData()
     }, []);
-    
+
     function ActionsCardItem(props) {
         const [open, setOpen] = useState(false);
-    
+
         return (
         <li className="action-item-style">
             <a className="action-button-style" onClick={() => setOpen(!open)}>
             {props.icon}
             </a>
-    
+
             {open && props.children}
         </li>
         );
@@ -107,7 +107,7 @@ const User = () => {
 
     return (
 
-        <div>   
+        <div>
             <Navbar />
             <Drawer
                 title=" "
@@ -165,16 +165,16 @@ const User = () => {
                 <div className="container-style-user justify-content-center">
                     <div className="page-header-container">
                         <div className="picture-style">
-                            <CardAntDesign bodyStyle={{ width: 200, alignItems: 'center', justifyContent: 'center' }} bordered={false} 
+                            <CardAntDesign bodyStyle={{ width: 200, alignItems: 'center', justifyContent: 'center' }} bordered={false}
                             cover={<img src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} style={{width: 200, height: 200, marginTop: 25, borderRadius: 100}}/>}>
-                            </CardAntDesign>    
+                            </CardAntDesign>
                         </div>
                         <div className="info-style">
                             <div style={{wdith: '50%', paddingLeft: 5, paddingRight: 5, }}>
                             <CardAntDesign style={{ width: '100%', paddingTop: 20 }} bordered={false}>
                                 <p style={{fontSize: 25, fontWeight: '600'}}>{user.displayName}</p>
                                 <p>This is a brief description about me, and I hope that everyone is doing okay hehe</p>
-                                <span><ButtonAntDesign onClick={showDrawer}>Edit Profile</ButtonAntDesign></span>
+                                <span><ButtonAntDesign className="edit" onClick={showDrawer}>Edit Profile</ButtonAntDesign></span>
                             </CardAntDesign>
                             </div>
                         </div>
@@ -215,7 +215,7 @@ const User = () => {
                                                                     <div style={{marginTop: -5}}>
                                                                     <div>
                                                                         <IconContext.Provider value={{ size: "0.7em"}}><ImClock/> </IconContext.Provider><span style={{fontSize: 12}}>{newDateTime} - {user.emotions}</span>
-                                                                    </div>    
+                                                                    </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -234,13 +234,13 @@ const User = () => {
                                                                     <span style={{fontSize: 12}}><ButtonAntDesign style={{borderWidth: 0.1, width: 0, borderRadius: 30,  borderColor: 'transparent'}} onClick={() => {
                                                                     }}><ActionsCardItem icon={<CommentIcon />}/></ButtonAntDesign><span style={{marginBottom: -5}}>{user.comments.length} {user.comments.length > 1 ? 'Comments' : 'Comment'}</span></span>
                                                                     <span><ButtonAntDesign style={{borderWidth: 0.1, width: 0, borderRadius: 30,  borderColor: 'transparent'}} onClick={() =>{}}><ActionsCardItem icon={<ShareIcon />}/></ButtonAntDesign></span>
-                                                                </Row> 
+                                                                </Row>
                                                                 <Card.Text style={{fontSize: 12, marginBottom: 0,marginTop: 15, marginLeft: 10}}>{user.comments ? 'User replies': 'No user replies yet'}</Card.Text>
                                                                 <FlatList
                                                                 list={user.comments}
                                                                 sortDescending={false}
                                                                 renderItem={(comment, index) => {
-                                                                    
+
                                                                     const publishedDateComment = comment.createdAt;
                                                                     const dateTimeComment = moment(publishedDateComment, "YYYY-MM-DD hh:mm:ss").format("MMMM DD, YYYY HH:mm:ss")
                                                                     const newDateTimeComment = moment(dateTimeComment).fromNow()
@@ -251,12 +251,12 @@ const User = () => {
                                                                                 <Card.Header style={{backgroundColor: '#fff', border:0, alignItems: 'center'}}>
                                                                                 <div className="profile-style">
                                                                                     <Image src={comment.photoURL ? `${comment.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 25, width: 25, backgroundSize: 'cover', marginRight: 60}} className="image-profile-style" fluid/>
-                                                                                    <div className="name-section-style-comment">    
+                                                                                    <div className="name-section-style-comment">
                                                                                         <span style={{fontSize: 10,}}>{comment.displayName}</span>
                                                                                         <div style={{marginTop: -10}}>
                                                                                             <div>
                                                                                                 <IconContext.Provider value={{ size: "0.5em"}}><ImClock/>  </IconContext.Provider><span style={{fontSize: 10}}>{newDateTimeComment}</span>
-                                                                                            </div>    
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -287,34 +287,34 @@ const User = () => {
                                             }}
                                             renderWhenEmpty={() => <div>
                                                 <Card
-                                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                                 className="card-style">
                                                     <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                                 </Card>
                                                 <Card
-                                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                                 className="card-style"
                                                 >
                                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                                 </Card>
                                                 <Card
-                                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                                 className="card-style"
                                                 >
                                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                                 </Card>
                                                 <Card
-                                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                                 className="card-style"
                                                 >
                                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                                 </Card>
                                             </div>}
                                             />
-                                        </ul> 
+                                        </ul>
                                     </div>
                                 </div>
-                                
+
                                 </TabPane>
                                 {/* <TabPane tab={
                                     <span>
@@ -337,11 +337,11 @@ const User = () => {
                                 </div>
                                 </TabPane> */}
                             </Tabs>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

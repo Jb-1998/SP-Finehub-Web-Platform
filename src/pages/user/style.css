@@ -1,0 +1,42 @@
+.container-style-user {
+  display: grid;
+  grid-template-areas: "profile";
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.profile-style {
+  grid-area: profile;
+}
+.page-header-container {
+  display: grid;
+  grid-template-areas:
+    "picture info"
+    "tabs tabs";
+}
+.picture-style {
+  grid-area: picture;
+}
+
+.info-style {
+  grid-area: info;
+}
+
+.tabs-style {
+  grid-area: tabs;
+  margin-top: -50px;
+}
+
+.activities-container {
+  display: grid;
+  grid-template-areas: "setting-feed activity-feed";
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.setting-feed {
+  grid-area: setting-feed;
+}
+.activity-feed {
+  grid-area: activity-feed;
+}

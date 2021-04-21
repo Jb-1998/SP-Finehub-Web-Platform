@@ -19,6 +19,10 @@
 
 .card-style {
   width: 530px;
+  font-size: 2em;
+}
+.name-section-style-second {
+  border-left: solid transparent 2em;
 }
 
 .profile-style {
@@ -77,8 +81,14 @@
 }
 
 @media only screen and (max-width: 480px)  {
-  .card {zoom: 0.5;
-    -moz-transform: scale(0.5);}
+  .card {
+    zoom: 0.6;
+    -moz-transform: scale(0.6);
+    font-size: 2em;  }
+
+.name-section-style-second {
+  border-left: solid transparent 2em;
+}
 
   .button {
     position: fixed;

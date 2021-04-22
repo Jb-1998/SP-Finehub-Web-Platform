@@ -66,7 +66,7 @@
   }
 
   .edit {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
     .setting-feed {
@@ -76,8 +76,8 @@
     }
 
     .activities-container {
-      zoom: 0.80;
-      -moz-transform: scale(0.80);
+      zoom: 1;
+      -moz-transform: scale(1);
       position: absolute;
     }
 

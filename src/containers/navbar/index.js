@@ -125,10 +125,16 @@ const NavigationBar = () => {
           <Navbar.Brand href="home" className="title-style">finehub</Navbar.Brand>
           <ul className="nav-menu">
                 <li className="nav-item">
-                    <a href="#" className="nav-link">Home</a>
+                    <a href="#" className="nav-link">Activities</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="nav-link">Profile</a>
+                    <a href="#" className="nav-link">Emotion Analytics</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link">My Profile</a>
+                </li>
+                <li className="nav-item">
+                    <a href="#" className="nav-link">Scheduled Session</a>
                 </li>
                 <li className="nav-item">
                     <a href="#" className="nav-link">Settings & Privacy</a>

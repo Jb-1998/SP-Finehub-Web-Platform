@@ -24,7 +24,7 @@ import {Avatar, Skeleton, Timeline, Popconfirm, message, Divider } from 'antd';
 import {Button  as ButtonAntDesign} from 'antd'
 import { Card as CardAntDesign} from 'antd';
 
-// Packages and styles required for emoji modal, component used is NimblePicker, 
+// Packages and styles required for emoji modal, component used is NimblePicker,
 //emoji data styling type used is twitter emojis
 import data from 'emoji-mart/data/twitter.json'
 import {NimblePicker } from 'emoji-mart'
@@ -45,7 +45,7 @@ import FlatList from 'flatlist-react';
 import Scrollbars from 'react-custom-scrollbars';
 import TextareaAutosize from "react-autosize-textarea"
 
-// custom components and containers created 
+// custom components and containers created
 import {Navbar} from "../../containers"
 import CommentInput from '../../components/comment-input/index'
 
@@ -67,13 +67,13 @@ function confirm() {
 }
 function NavItem(props) {
     const [open, setOpen] = useState(false);
-  
+
     return (
       <li className="nav-item-style">
         <a className="icon-button-style" onClick={() => setOpen(!open)}>
           {props.icon}
         </a>
-  
+
         {open && props.children}
       </li>
     );
@@ -81,13 +81,13 @@ function NavItem(props) {
 
   function ActionsCardItem(props) {
     const [open, setOpen] = useState(false);
-  
+
     return (
       <li className="action-item-style">
         <a className="action-button-style" onClick={() => setOpen(!open)}>
           {props.icon}
         </a>
-  
+
         {open && props.children}
       </li>
     );
@@ -118,14 +118,14 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <span style={{backgroundColor: '#E8E8E8', width: 10, height: 10}}>&#x25BE;</span>
     </a>
   ));
-  
+
   // forwardRef again here!
   // Dropdown needs access to the DOM of the Menu to measure it
 
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
       const [value, setValue] = useState('');
-  
+
       return (
         <div
           ref={ref}
@@ -170,13 +170,13 @@ const Home = () => {
     }
     const inputEl = useRef(null);
     useEffect(() => {
-        setCurrentDay(moment().format("YYYY-M-D HH:mm:ss")) 
+        setCurrentDay(moment().format("YYYY-M-D HH:mm:ss"))
     }, [currentDay]);
     const getFeedData = () => {
 
         try{
             axios.get('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/',
-            {   
+            {
                 headers: {
                     'Accept': 'application/json',
                     "Content-Type": 'application/json',
@@ -184,7 +184,7 @@ const Home = () => {
             }).then((res) => {
                 setFeedData(res.data)
             })
-        } catch(err){            
+        } catch(err){
         }
     }
 
@@ -198,7 +198,7 @@ const Home = () => {
         event.preventDefault();
         if(imageAsFile === null) {
             try {
-                axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store', 
+                axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store',
                 {
                     "uid": uid,
                     "displayName": displayName,
@@ -229,7 +229,7 @@ const Home = () => {
         } else if(imageAsFile !== null){
             const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
             let timeData = moment().format("YYYY-MM-DD HH:mm:ss")
-            uploadTask.on('state_changed', 
+            uploadTask.on('state_changed',
             (snapShot) => {
                 //takes a snap shot of the process as it is happening
             }, (err) => {
@@ -241,7 +241,7 @@ const Home = () => {
                 .then(url => {
                     setImageAsUrl(url)
                     try {
-                        axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store', 
+                        axios.post('https://asia-southeast2-fineweb-99acb.cloudfunctions.net/feed_post_data/feed/store',
                         {
                             "uid": uid,
                             "displayName": displayName,
@@ -338,14 +338,14 @@ const Home = () => {
                                         <Dropdown.Item eventKey="😰Fearful" onSelect={(eventKey, event) => setEmotions(eventKey)} style={{fontSize: 12}}><Emoji symbol="😨" label="sheep"/> Fearful</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </div> 
+                            </div>
                         </div>
                     </Modal.Title>
                     <Scrollbars style={{height: imageAsFile ? 300 : 120, }} autoHide={imageAsFile ? false : true}>
                             <TextareaAutosize  className="text-area-style" placeholder="What would you like to share?" style={{width: '90%'}} value={content} onChange={(e) => {
                                 setContent(e.target.value)
                                 closeMenu()
-                                }   
+                                }
                             }/>
                         <div>
                             {
@@ -359,7 +359,7 @@ const Home = () => {
                         </div>
                     </Scrollbars>
                     <label for="upload-photo" style={{cursor: 'pointer'}}><FiImage/></label>
-                            <input 
+                            <input
                             type="file"
                             name="photo"
                             id="upload-photo"
@@ -368,7 +368,7 @@ const Home = () => {
 
                         {
                             showEmojis ?
-                            <span style={styles.emojiPicker} ref={inputEl}> 
+                            <span style={styles.emojiPicker} ref={inputEl}>
                                 <NimblePicker sheetSize={64} set="twitter" data={data} onSelect={addEmoji} title="" emoji='none' style={{ position: 'absolute', bottom: '20px', right: '20px' }} />
                             </span>
                             :
@@ -418,8 +418,8 @@ const Home = () => {
                                                     <span>{user.displayName}</span>
                                                     <div style={{marginTop: -5}}>
                                                     <div>
-                                                        <IconContext.Provider value={{ size: "0.7em"}}><ImClock/> </IconContext.Provider><span style={{fontSize: 12}}>{newDateTime} - {user.emotions}</span>
-                                                    </div>    
+                                                        <IconContext.Provider value={{ size: "0.7em"}}><ImClock/> </IconContext.Provider><span style={{fontSize: 12,}}>{newDateTime} - {user.emotions}</span>
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -438,29 +438,29 @@ const Home = () => {
                                                     <span style={{fontSize: 12}}><ButtonAntDesign style={{borderWidth: 0.1, width: 0, borderRadius: 30,  borderColor: 'transparent'}} onClick={() => {
                                                     }}><ActionsCardItem icon={<CommentIcon />}/></ButtonAntDesign><span style={{marginBottom: -5}}>{user.comments.length} {user.comments.length > 1 ? 'Comments' : 'Comment'}</span></span>
                                                     <span><ButtonAntDesign style={{borderWidth: 0.1, width: 0, borderRadius: 30,  borderColor: 'transparent'}} onClick={() =>{}}><ActionsCardItem icon={<ShareIcon />}/></ButtonAntDesign></span>
-                                                </Row> 
+                                                </Row>
                                                 <Card.Text style={{fontSize: 12, marginBottom: 0,marginTop: 15, marginLeft: 10}}>{user.comments ? 'User replies': 'No user replies yet'}</Card.Text>
                                                 <FlatList
                                                 list={user.comments}
                                                 sortDescending={false}
                                                 renderItem={(comment, index) => {
-                                                    
+
                                                     const publishedDateComment = comment.createdAt;
                                                     const dateTimeComment = moment(publishedDateComment, "YYYY-MM-DD hh:mm:ss").format("MMMM DD, YYYY HH:mm:ss")
                                                     const newDateTimeComment = moment(dateTimeComment).fromNow()
                                                     return (
-                                                        <div>
+                                                        <div className="feed">
                                                             <li key={index}>
                                                             <Card style={{marginBottom: -20, border:0, marginLeft: 0, width: '90%'}} className="card-style-comment">
                                                                 <Card.Header style={{backgroundColor: '#fff', border:0, alignItems: 'center'}}>
                                                                 <div className="profile-style">
                                                                     <Image src={comment.photoURL ? `${comment.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 25, width: 25, backgroundSize: 'cover', marginRight: 60}} className="image-profile-style" fluid/>
-                                                                    <div className="name-section-style-comment">    
+                                                                    <div className="name-section-style-comment">
                                                                         <span style={{fontSize: 10,}}>{comment.displayName}</span>
                                                                         <div style={{marginTop: -10}}>
                                                                             <div>
                                                                                 <IconContext.Provider value={{ size: "0.5em"}}><ImClock/>  </IconContext.Provider><span style={{fontSize: 10}}>{newDateTimeComment}</span>
-                                                                            </div>    
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -478,7 +478,7 @@ const Home = () => {
                                                 renderWhenEmpty={() => <div></div>}
                                                 />
                                             </Card.Body>
-                                            <Card.Footer style={{backgroundColor: '#fff',}}>
+                                            <Card.Footer className="footer" style={{backgroundColor: '#fff',}}>
                                                 <Row style={{marginTop: 0, backgroundColor: 'white',paddingTop: 10, paddingBottom: 10, borderRadius: 5}}>
                                                     <Image src={photoURL ? `${photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} roundedCircle style={{height: 25, width: 25, backgroundSize: 'cover', marginRight: 25, marginLeft: 20}} className="image-profile-style" fluid/>
                                                     <CommentInput data_id={index} content_id={user.id} refresh={getFeedData}/>
@@ -491,24 +491,24 @@ const Home = () => {
                             }}
                             renderWhenEmpty={() => <div>
                                 <Card
-                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                 className="card-style">
                                     <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                 </Card>
                                 <Card
-                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                 className="card-style"
                                 >
                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                 </Card>
                                 <Card
-                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                 className="card-style"
                                 >
                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
                                 </Card>
                                 <Card
-                                style={{marginBottom: 5, height: '100%', padding: 20}} 
+                                style={{marginBottom: 5, height: '100%', padding: 20}}
                                 className="card-style"
                                 >
                                 <Skeleton loading={loadingCard} avatar active style={{marginBottom: 10}}></Skeleton>
@@ -528,6 +528,7 @@ const Home = () => {
                             style={{ width: '17rem', marginBottom: 0}}
                             cover={
                             <img
+                                className="cp"
                                 alt="example"
                                 src="https://images.unsplash.com/photo-1598550487031-0898b4852123?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                                 style={{borderRadius: 20}}
@@ -535,21 +536,25 @@ const Home = () => {
                             }
                             >
                             <Meta
+                            className="pfp"
                             avatar={<Avatar src={user.photoURL ? `${user.photoURL}` : 'https://res.cloudinary.com/dcw61tfvq/image/upload/v1614527393/cute_volmwc.png'} style={{marginTop: -70, marginLeft: '80%', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderStyle: 'solid', borderColor: 'black'}} size={90}/>}
                             description={<p><br/>{''}</p>}
                             style={{fontSize: 12}}
                             />
                             <Meta
+                            className="displayname"
                             title={<p style={{fontSize: 13.5, marginTop: 0, textAlign: 'center'}}>{user.displayName}</p>}
                             description={<p style={{marginTop: -25, marginBottom: -1, textAlign: 'center'}}>This is my brief profile section</p>}
                             style={{fontSize: 12}}
 
                             />
                             </CardAntDesign>
-                            <Link to="/"><Button variant="secondary" onClick={() => {}} style={{width: '17rem', marginBottom: 5}}>My Profile</Button></Link>
+                            <Link to="/"><Button className="profile" variant="secondary" onClick={() => {}} style={{width: '17rem', marginBottom: 5}}>My Profile</Button></Link>
+
                             <button className="post-button-style" onClick={() => setModalShow(true)} style={{width: '17rem', marginBottom: 20}}>Create a post</button>
+
                             <p style={{fontWeight: 'bold', color: '#a7a7a7'}}>Activities</p>
-                            <CardAntDesign hoverable size="small" title="Scheduled Session" style={{ width: '17rem', borderRadius: 10, alignItems: 'center', borderWidth: 1.5, marginBottom: 10, marginLeft:0}} bordered onClick={() => {}}
+                            <CardAntDesign className="sched "hoverable size="small" title="Scheduled Session" style={{ width: '17rem', borderRadius: 10, alignItems: 'center', borderWidth: 1.5, marginBottom: 10, marginLeft:0}} bordered onClick={() => {}}
                                 extra={
                                     <Popconfirm
                                     placement="rightTop"
@@ -564,7 +569,7 @@ const Home = () => {
                                         </ButtonAntDesign>
                                     </Popconfirm>
                                 }
-                            >   
+                            >
                                 <p>Here is your session schedules for today</p>
                                 <Timeline>
                                     <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>

@@ -174,3 +174,63 @@
   top: 50px;
   bottom: 300px;
 }
+
+@media only screen and (max-width: 480px)  {
+
+.cp{
+  display: none;
+}
+
+.pfp{
+  display: none;
+}
+
+.info{
+  display: none;
+}
+
+.profile{
+  display: none;
+}
+
+.displayname{
+  display: none;
+}
+
+.sched{
+  display: none;
+}
+
+.card-style {
+  margin-top: 25px;
+  zoom: 0.8;
+  -moz-transform: scale(0.8);
+  }
+
+.footer{
+  width: 340px;
+  border-left: solid transparent 2em;
+}
+
+
+.name-section-style-second {
+    border-left: solid transparent 10em;
+}
+
+.post-button-style{
+  position: fixed;
+  top: 400px;
+  left: 440px;
+  max-width: 60px;
+    height: 60px;
+    text-indent: -9000px; text-transform: capitalize;
+    background-image: url(sample.png); /* 16px x 16px */
+    background-size: cover;
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;
+
+}
+
+}

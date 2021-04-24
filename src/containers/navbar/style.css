@@ -179,9 +179,12 @@ a {
         border-radius: 10px;
         text-align: center;
         transition: 0.3s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     }
+
+div{
+  overflow-x: hidden;
+}
 
     .nav-menu.active {
         left: 0;

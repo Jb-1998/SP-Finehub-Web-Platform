@@ -24,7 +24,9 @@
 
 .card-style {
   width: 470px;
+
 }
+
 .card-style-comment {
   width: 500px;
 }
@@ -51,9 +53,11 @@
   margin-left: -9rem;
 }
 
+
 .name-section-style-second {
   grid-area: nameSection;
   margin-left: -11.6rem;
+  border-left: solid transparent 2em;
 }
 .name-section-style-comment {
   grid-area: nameSection;
@@ -181,6 +185,11 @@
   display: none;
 }
 
+.act{
+  display: none;
+}
+
+
 .pfp{
   display: none;
 }
@@ -203,8 +212,10 @@
 
 .card-style {
   margin-top: 25px;
-  zoom: 0.8;
-  -moz-transform: scale(0.8);
+  zoom: 0.9;
+  -moz-transform: scale(0.9);
+  margin-left: -200px;
+  z-index: 1;
   }
 
 .footer{
@@ -219,8 +230,8 @@
 
 .post-button-style{
   position: fixed;
-  top: 400px;
-  left: 440px;
+  top: 650px;
+  left: 20px;
   max-width: 60px;
     height: 60px;
     text-indent: -9000px; text-transform: capitalize;
@@ -230,7 +241,10 @@
     background-repeat: no-repeat;  /* make the background image appear only once */
     background-position: 0px 0px;  /* equivalent to 'top left' */
     border: none;
+}
 
+.settings-style{
+  z-index: -3;
 }
 
 }

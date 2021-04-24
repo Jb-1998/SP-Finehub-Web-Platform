@@ -553,8 +553,8 @@ const Home = () => {
 
                             <button className="post-button-style" onClick={() => setModalShow(true)} style={{width: '17rem', marginBottom: 20}}>Create a post</button>
 
-                            <p style={{fontWeight: 'bold', color: '#a7a7a7'}}>Activities</p>
-                            <CardAntDesign className="sched "hoverable size="small" title="Scheduled Session" style={{ width: '17rem', borderRadius: 10, alignItems: 'center', borderWidth: 1.5, marginBottom: 10, marginLeft:0}} bordered onClick={() => {}}
+                            <p className="act" style={{fontWeight: 'bold', color: '#a7a7a7'}}>Activities</p>
+                            <CardAntDesign className="sched" hoverable size="small" title="Scheduled Session" style={{ width: '17rem', borderRadius: 10, alignItems: 'center', borderWidth: 1.5, marginBottom: 10, marginLeft:0}} bordered onClick={() => {}}
                                 extra={
                                     <Popconfirm
                                     placement="rightTop"

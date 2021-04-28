@@ -550,7 +550,7 @@ const Home = () => {
                             />
                             </CardAntDesign>
                             <Link to="/"><Button className="profile" variant="secondary" onClick={() => {}} style={{width: '17rem', marginBottom: 5}}>My Profile</Button></Link>
-
+                            <Link to="/emotion"><Button variant="secondary" onClick={() => {}} style={{width: '17rem', marginBottom: 5}}>Emotion Analytics</Button></Link>
                             <button className="post-button-style" onClick={() => setModalShow(true)} style={{width: '17rem', marginBottom: 20}}>Create a post</button>
 
                             <p className="act" style={{fontWeight: 'bold', color: '#a7a7a7'}}>Activities</p>
